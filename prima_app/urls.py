@@ -1,5 +1,5 @@
 from django.urls import path
-from prima_app.views import *
+from .views import *
 
 
 app_name = "prima_app"
