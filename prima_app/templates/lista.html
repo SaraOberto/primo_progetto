@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lista</title>
-</head>
-<body>
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Lista {%endblock title%}
+
+{%block content%}
     <ol>Primo</ol>
     <ol>Secondo</ol>
     <ol>Terzo</ol>
-</body>
-</html>
+{%endblock content%}

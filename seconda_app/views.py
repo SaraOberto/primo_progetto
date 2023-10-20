@@ -2,6 +2,10 @@ from django.shortcuts import render
 import datetime
 
 # Create your views here.
+
+def index_2(request):
+    return render(request, "index_2.html")
+
 def es_if(request):
     context = {
         'var1' : 200,
