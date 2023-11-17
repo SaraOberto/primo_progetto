@@ -5,14 +5,14 @@
 {% endblock title %}    
 
 {% block content %}
-<h1>Articoli</h1>
-{% for articolo in articoli %}
-    {%if pk %}
-    <li>{{articolo.titolo}}</li>
-    <br><p>{{articolo.contenuto}}</p>
-    {% else %}
-    <li>{{articolo.titolo}}</li>
-    <br><p>{{articolo.contenuto}}</p>
-    {% endif %}
-{% endfor %}
+    <h1>Articoli</h1>
+    {% for articolo in articoli %}
+        {%if pk %}
+            <li>{{articolo.titolo}}</li>
+            <br><p>{{articolo.contenuto}}</p>
+        {% else %}
+            <li>{{articolo.titolo}}</li>
+            <br><p>{{articolo.contenuto}}</p>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}

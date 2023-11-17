@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{%block title%} 
+    Query Base
+{%endblock title%}
+{%block content %}
+    <h1>Risultati delle Query</h1>
+
+    <h6>Query 1: Articoli di giornalisti con cognome 'Marinelli'</h6>
+    <ul>
+        {% for articolo in articoli_cognome %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 2: Numero totale di articoli</h6>
+    <p>{{ numero_totale_articoli }}</p>
+
+    <h6>Query 3: Numero di articoli scritti dal giornalista con ID 4</h6>
+    <p>{{ numero_articoli_giornalista_1 }}</p>
+
+    <h6>Query 4: Articoli ordinati per numero di visualizzazioni (decrescente)</h6>
+    <ul>
+        {% for articolo in articoli_ordinati %}
+            <li>{{ articolo.titolo }} - Visualizzazioni: {{ articolo.visualizzazioni }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 5: Articoli senza visualizzazioni</h6>
+    <ul>
+        {% for articolo in articoli_senza_visualizzazioni %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 6: Articolo più visualizzato</h6>
+    <p>{{ articolo_piu_visualizzato.titolo }} - Visualizzazioni: {{ articolo_piu_visualizzato.visualizzazioni }}</p>
+
+    <h6>Query 7: Giornalisti nati dopo il 1900</h6>
+    <ul>
+        {% for giornalista in giornalista_data %}
+            <li>{{ giornalista.nome }} {{ giornalista.cognome }}</li>
+        {% endfor %}
+    </ul>
+        
+
+    <h6>Query 8: Articoli pubblicati il 1 gennaio 2023</h6>
+    <ul>
+        {% for articolo in articoli_del_giorno %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 9: Articoli pubblicati nel 2023</h6>
+    <ul>
+        {% for articolo in articoli_periodo %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <h6>Query 10: Articoli scritti da giornalisti nati prima del 1980</h6>
+    {% if articoli_giornalisti %}
+            {% for articolo in articoli_giornalisti %}
+                <li>{{ articolo.titolo }} - Scritto da {{ articolo.giornalista.nome }} {{ articolo.giornalista.cognome }}</li>
+            {% endfor %}
+    {% else %}
+        <p>Tutti i giornalisti sono nati dopo il 1980</p>
+    {% endif %}
+
+
+    <h6>Query 11: Giornalista più giovane</h6>
+    <p>{{ giornalista_giovane.nome }} {{ giornalista_giovane.cognome }} {{giornalista_giovane.anno_di_nascita}}</p>
+
+    <h6>Query 12: Giornalista più anziano</h6>
+    <p>{{ giornalista_anziano.nome }} {{ giornalista_anziano.cognome }} {{giornalista_anziano.anno_di_nascita}}</p>
+
+    <h6>Query 13: Ultimi 5 articoli pubblicati</h6>
+    <ul>
+        {% for articolo in ultimi %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 14: Articoli con almeno 100 visualizzazioni</h6>
+    <ul>
+        {% for articolo in articoli_minime_visualizzazioni %}
+            <li>{{ articolo.titolo }} - Visualizzazioni: {{ articolo.visualizzazioni }}</li>
+        {% endfor %}
+    </ul>
+
+    <h6>Query 15: Articoli che contengono la parola 'importante' nel titolo</h6>
+    <ul>
+        {% for articolo in articoli_parola %}
+            <li>{{ articolo.titolo }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+    
+{%endblock content%}

@@ -35,13 +35,22 @@
                 <a class="dropdown-item" href="{% url 'prima_app:welcome'%}">Welcome</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="index_2.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Seconda app
+              <a class="nav-link dropdown-toggle" href="index_2.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Seconda app
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'seconda_app:es_if'%}">es_if</a>
+                <a class="dropdown-item" href="{% url 'seconda_app:if_else_elif'%}">if_else_elif</a>
+                <a class="dropdown-item" href="{% url 'seconda_app:es_for'%}">es_for</a>
+           </li>  
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  News
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'seconda_app:es_if'%}">Es if</a>
-                  <a class="dropdown-item" href="{% url 'seconda_app:es_for'%}">Es for</a>
-                  <a class="dropdown-item" href="{% url 'seconda_app:if_else_elif'%}">If else elif</a>
+                  <a class="dropdown-item" href="{% url 'news:homepage_news'%}">Homepage</a>
+                  <a class="dropdown-item" href="{% url 'news:lista_articoli'%}">Lista_articoli</a>
+                  <a class="dropdown-item" href="{% url 'news:query_base'%}">query_base</a>
              </li>             
           </ul>
           <form class="form-inline my-2 my-lg-0">
