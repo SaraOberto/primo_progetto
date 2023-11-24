@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Articolo, Giornalista
 import datetime
@@ -18,6 +18,13 @@ def articoloDetailView(request, pk):
     articolo = get_object_or_404(Articolo, pk=pk)
     context = {"articolo": articolo}
     return render(request, "articolo_detail.html", context)
+
+def giornalistaDetailView(request, pk):
+    giornalista = get_object_or_404(Giornalista, pk=pk)
+    articoli=Articolo.objects.filter(giornalista_id=pk)
+    context = {"giornalista": giornalista, "articolo": articoli }
+    return render(request, "giornalista_detail.html", context)
+
     #for art in Articolo.objects.all():
         #a += (art.titolo + "<br>")
         #a.append(art.titolo)
@@ -43,6 +50,21 @@ def lista_articoli_giornalisti(request, pk=None):
     }
     return render(request, 'lista_articoli.html', context)
 
+
+def lista_giornalisti(request, pk=None):
+    if(pk==None):
+        giornalisti=Giornalista.objects.all()
+    else:
+        giornalisti=Giornalista.objects.filter(giornalista_id=pk)
+    context = {
+        'giornalisti': giornalisti,
+        'pk':pk,
+    }
+    return render(request, 'lista_giornalisti.html', context)
+
+def index_news(request):
+    return render(request, "index_news.html")
+    
 def query_base(request):
     #1. Tutti gli articoli scritti dai gionalisti di un certo cognome:
     articoli_cognome = Articolo.objects.filter(giornalista__cognome='Marinelli')
@@ -97,7 +119,7 @@ def query_base(request):
     articoli_mese_anno=Articolo.objects.filter(data__month=1, data__year=2023)
 
     #17 giornalisti con almeno un articolo con più di 100 visualizzazioni:
-    giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli_visualizzazioni__gte=100).distinct()
+    giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()
 
     """
     spiegazione dettagliata:

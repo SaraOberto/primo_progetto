@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Index news {%endblock title%}
+
+{%block content%}
+    <h1>Index news</h1>
+    <li><a href="{% url 'index'%}">Index</a></li>
+    <li><a href="{% url 'news:homepage_news'%}">Homepage</a></li>
+    <li><a href="{% url 'news:lista_articoli'%}">Lista articoli</a></li>
+    <li><a href="{% url 'news:lista_giornalisti'%}">Lista giornalisti</a></li>
+    <li><a href="{% url 'news:query_base'%}">Query</a></li>
+{%endblock content%}
