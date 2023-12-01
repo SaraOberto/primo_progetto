@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'prima_app',
     'news',
+    'prova_pratica_1',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | voti {%endblock title%}
+
+{%block content%}
+
+<table>
+    {% for studente,voto in dizionario.items %}
+    <tr>   
+        <th> {{ studente }} </th>
+    </tr>
+    <tr>
+        <td>{{voto}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{%endblock content%}
