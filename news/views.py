@@ -2,7 +2,33 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Articolo, Giornalista
 import datetime
+from django.http import JsonResponse
 # Create your views here.
+
+def giornalisti_lista_api(request):
+    giornalisti=Giornalista.objects.all()
+    data={'giornalisti':list(giornalisti.values("pk","nome","cognome"))}
+    response=JsonResponse(data)
+    return response
+
+def giornalista_api(request,pk):
+    try:
+        giornalista=Giornalista.objects.get(pk=pk)
+        data={ 'giornalista':{
+            "nome": giornalista.nome,
+            "cognome":giornalista.cognome,
+            }
+        }
+        response=JsonResponse(data)
+    except Giornalista.DoesNotExist:
+        response=JsonResponse({
+          "error":{
+              "code":404,
+              "message":"Giornalista non trovato"
+          }},  
+        status=404)
+    return response
+
 
 def homepage_news(request):
     a = ""
@@ -131,7 +157,7 @@ def query_base(request):
     .distinct(): E' un metodo che assicur che i risualtati siano distinti, eliminando eventuali duplicati.
     In questo caso, ciò è utile perchè un gionalista potrebbe essere associato a più articoli che soddisfano 
     il criterio, e vogliono ottenere una volta ogni giornalista che ha scritto almeno un articolo popolare.
-    """ 
+    """
 
     #UTILIZZO DI PIU' CONDIZIONI DI SELEZIONE 
     data = datetime.date(1990, 1, 1)
