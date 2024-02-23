@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-!3xwgasvfomst=@4214+bnzo0iw@awxk-+(wb2s186_op2!)x6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -41,6 +43,10 @@ INSTALLED_APPS = [
     'prima_app',
     'news',
     'prova_pratica_1',
+    'voti',
+    'corsheaders',
+    'products',
+    
 ]
 
 MIDDLEWARE = [
@@ -51,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'primo_progetto.urls'
@@ -62,6 +69,8 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'templates'), 
                  os.path.join(BASE_DIR, 'seconda_app/templates'),
                  os.path.join(BASE_DIR, 'news/templates'),
+                 os.path.join(BASE_DIR, 'voti/templates'),
+
                 ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -123,7 +132,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL e MEDIA_URL definiscono gli URL di base per accedere ai file statici
+#e ai file multimediali nel tuo progetto Django,
+#mentre MEDIA_ROOT definisce la directory finisca sul server in cui vengono
+#salvati i file multimediali
+STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "uploads"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

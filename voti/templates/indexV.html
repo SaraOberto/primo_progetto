@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Index V {%endblock title%}
+
+{%block content%}
+    <h1>Index V</h1>
+    <li><a href="{% url 'voti:view_a'%}">view_a</a></li>
+    <li><a href="{% url 'voti:view_b'%}">view_b</a></li>
+    <li><a href="{% url 'voti:view_c'%}">view_c</a></li>
+    <li><a href="{% url 'voti:view_d'%}">view_d</a></li>
+{%endblock content%}
