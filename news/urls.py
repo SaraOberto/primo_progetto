@@ -17,5 +17,4 @@ urlpatterns = [
     path('', index_news, name='index_news'),
     path("lista_giornalisti_api/", giornalisti_lista_api, name="list_giornalisti_api"),
     path("giornalista_api/<int:pk>", giornalista_api, name="giornalista_api"),
-    
 ]
