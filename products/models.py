@@ -15,7 +15,7 @@ class Product (models.Model):
                                     on_delete=models.CASCADE, related_name="products")
     name = models.CharField(max_length=120)
     description = models.TextField(blank=True, null=True) 
-    photo = models.ImageField(blank=True, null=True) 
+    photo= models.URLField(max_length=200,blank=True)
     price = models.FloatField()
     shipping_cost = models.FloatField()
     quantity = models. PositiveSmallIntegerField()
