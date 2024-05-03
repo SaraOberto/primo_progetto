@@ -83,15 +83,30 @@
           </form>
         </div>
       </nav>
+        <div class="container my-4">
+          <!--servirà per inserire i contenuti della pagina-->
+          {%block content%}
+          {%endblock content%}
+          <!--servirà per inserire il codice javascript-->
+          {%block script%}
+          {%endblock script%}
+        </div>
+  
+      {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{request.user.username}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{%url 'logout' %}">Esci</a>
+            </div>
+        </li>
+        
+      {% endif %}
+    
       
-      <div class="container my-4">
-        <!--servirà per inserire i contenuti della pagina-->
-        {%block content%}
-        {%endblock content%}
-        <!--servirà per inserire il codice javascript-->
-        {%block script%}
-        {%endblock script%}
-      </div>
+     
     <!-- Optional JavaScript; choose one of the two! -->
 
     
