@@ -1,4 +1,6 @@
 <!doctype html>
+ <!-- Includi Font Awesome CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 {% load static %}
 <html lang="it">
   <head>
@@ -21,9 +23,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <!-- <ul class="navbar-nav mr-auto"> -->
 
-            <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Prima app
               </a>
@@ -33,8 +35,10 @@
                 <a class="dropdown-item" href="{% url 'prima_app:lista'%}">Lista</a>
                 <a class="dropdown-item" href="{% url 'prima_app:variabili'%}">Varialibi</a>
                 <a class="dropdown-item" href="{% url 'prima_app:welcome'%}">Welcome</a>
-            </li>
-            <li class="nav-item dropdown">
+              </div>
+            </div>
+           
+            <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="index_2.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Seconda app
                 </a>
@@ -42,9 +46,10 @@
                   <a class="dropdown-item" href="{% url 'seconda_app:es_if'%}">Es if</a>
                   <a class="dropdown-item" href="{% url 'seconda_app:es_for'%}">Es for</a>
                   <a class="dropdown-item" href="{% url 'seconda_app:if_else_elif'%}">If else elif</a>
-             </li>
+                </div>
+              </div> 
 
-             <li class="nav-item dropdown">
+              <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="indexP.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 prova_pratica_1
               </a>
@@ -52,9 +57,10 @@
                 <a class="dropdown-item" href="{% url 'prova_pratica_1:somma'%}">somma</a>
                 <a class="dropdown-item" href="{% url 'prova_pratica_1:media'%}">media</a>
                 <a class="dropdown-item" href="{% url 'prova_pratica_1:voti'%}">voti</a>
-           </li>
+              </div>
+            </div>
              
-            <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="index_news" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   News
                 </a>
@@ -63,9 +69,11 @@
                   <a class="dropdown-item" href="{% url 'news:lista_articoli'%}">Lista_articoli</a>
                   <a class="dropdown-item" href="{% url 'news:lista_giornalisti'%}">Lista_giornalisti</a>
                   <a class="dropdown-item" href="{% url 'news:query_base'%}">query_base</a>
-             </li>  
+                </div>
+                </div>
+              
              
-             <li class="nav-item dropdown">
+                <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="indexV" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Voti
               </a>
@@ -74,26 +82,23 @@
                 <a class="dropdown-item" href="{% url 'voti:view_b'%}">Registro voti</a>
                 <a class="dropdown-item" href="{% url 'voti:view_c'%}">Media voti</a>
                 <a class="dropdown-item" href="{% url 'voti:view_d'%}">Voto più alto e più basso</a>
-           </li>  
+              </div>
+            </div>
 
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-        <div class="container my-4">
-          <!--servirà per inserire i contenuti della pagina-->
-          {%block content%}
-          {%endblock content%}
-          <!--servirà per inserire il codice javascript-->
-          {%block script%}
-          {%endblock script%}
-        </div>
-  
-      {% if request.user.is_authenticated %}
-        <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Contatti
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'forms_app:contatti'%}">Contattaci</a>
+              <a class="dropdown-item" href="{% url 'forms_app:lista_contatti'%}">Lista Contatti</a>  
+            </div>
+             </div>
+
+          <!-- </ul> -->
+          
+          {% if request.user.is_authenticated %}
+          <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{request.user.username}}
             </a>
@@ -101,12 +106,23 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{%url 'logout' %}">Esci</a>
             </div>
-        </li>
+            </div>
+
+      {%else%}
+            <a class="nav-link" href="{% url 'login' %}">Login  </a>
         
       {% endif %}
     
-      
-     
+    </nav>
+      <div class="container my-4">
+        <!--servirà per inserire i contenuti della pagina-->
+        {%block content%}
+        {%endblock content%}
+        <!--servirà per inserire il codice javascript-->
+        {%block script%}
+        {%endblock script%}
+      </div>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     
